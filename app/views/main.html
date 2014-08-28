@@ -17,13 +17,11 @@
     <div class="container">
       <div class="jumbotron question">
         <form action="">
-        <h2>Insert Question Here</h2>
-          <ul id='question-list'>
-            <li><input type="radio" name="" value=""><span> A </span>Question </li>
-            <li><input type="radio" name="" value=""><span> B </span>Question </li>
-            <li><input type="radio" name="" value=""><span> C </span>Question </li>
-            <li><input type="radio" name="" value=""><span> D </span>Question </li>
-          </ul>
+        <div>
+          <li ng-repeat="question in quiz">
+            <strong>{{ question.q }}</strong>
+          </li>
+        </div>
         </form>
       </div>
 

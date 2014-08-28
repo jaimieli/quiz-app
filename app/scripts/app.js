@@ -16,6 +16,8 @@ angular
     'ngResource',
     'ngRoute'
   ])
+
+  // connects this view and this controller
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {

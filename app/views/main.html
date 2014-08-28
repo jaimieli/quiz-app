@@ -16,30 +16,40 @@
     </div>
 
     <div class="container">
+     <!--  orderBy is expecting an expression so when referencing the variable, difficulty, we have to put it in a string -->
       <div class="jumbotron question" ng-repeat="question in quiz | orderBy:'difficulty'">
         <form action="">
         <h2>{{$index + 1}}. {{question.q}}</h2>
           <ul id='question-list'>
-            <li ng-repeat="option in question.options"><input type="radio" name="" value="" ng-click="check(option.value, question.answer)"> {{option.value}}</li>
+            <!-- $parent is a way for you to access your parent's scope - we're using $parent's index to group the radio buttons for each question -->
+            <li ng-repeat="option in question.options"><input type="radio" name="question-{{$parent.$index}}" value="" ng-click="check(option.value, question)" ng-disabled="question.answered"> {{option.value}}</li>
           </ul>
         </form>
       </div>
       <div class="jumbotron question">
         <form ng-submit="submit()">
+          <h3>Submit a question by entering information into the fields below.</h3>
           Question:
           <input type="text" ng-model="question" name="text" />
+          <br></br>
           Option 1:
           <input type="text" ng-model="option1" name="text" />
+          <br></br>
           Option 2:
           <input type="text" ng-model="option2" name="text" />
+          <br></br>
           Option 3:
           <input type="text" ng-model="option3" name="text" />
+          <br></br>
           Option 4:
           <input type="text" ng-model="option4" name="text" />
+          <br></br>
           Difficulty:
           <input type="text" ng-model="difficulty" name="text" />
+          <br></br>
           Answer:
           <input type="text" ng-model="answer" name="text" />
+          <br></br>
           <input type="submit" id="submit" value="Submit" />
         </form>
       </div>

@@ -9,11 +9,6 @@
  */
 angular.module('quizApp')
   .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
     $scope.quiz = [
       {
         "q": "Who is the best ping pong player at FSA?",
@@ -41,9 +36,10 @@ angular.module('quizApp')
     ];
     // $scope.letters = ['A', 'B', 'C', 'D'];
     $scope.check = function(opt, quest) {
-      if (opt===quest){
-        $scope.score ++;
+      if (!quest.answered && opt===quest.answer){
+        $scope.score++;
       }
+      quest.answered = true;
     };
     $scope.score = 0;
     $scope.submit = function() {

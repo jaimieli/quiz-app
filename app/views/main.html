@@ -1,4 +1,4 @@
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -15,7 +15,8 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="container" ng-controller="QuizController">
+      <h3>Time Remaining: {{ timeLeft }}</h3>
       <div class="jumbotron question" ng-repeat="question in quiz | orderBy:'difficulty'">
         <form action="">
         <h2>{{$index + 1}}. {{question.q}}</h2>
@@ -24,18 +25,18 @@
           </ul>
         </form>
       </div>
-      <div class="jumbotron">
+      <div class="jumbotron" ng-controller="QuestionController as quest">
           <h3>Create a New Question</h3>
-          Question: <input type="text" ng-model="newQuestion.q" name="text" />
+          Question: <input type="text" ng-model="quest.newQuestion.q" name="text" />
           <br></br>
-          <button ng-click="addOption()">Add Answer Option: </button>
-          <input type="text" ng-repeat="option in newQuestion.options" ng-model="option.value" name="text"/>
+          <button ng-click="quest.addOption()">Add Answer Option: </button>
+          <input type="text" ng-repeat="option in quest.newQuestion.options" ng-model="option.value" name="text"/>
           <br></br>
-          Difficulty: <input type="text" ng-model="newQuestion.difficulty" name="text" />
+          Difficulty: <input type="text" ng-model="quest.newQuestion.difficulty" name="text" />
           <br></br>
-          Answer: <input type="text" ng-model="newQuestion.answer" name="text" />
+          Answer: <input type="text" ng-model="quest.newQuestion.answer" name="text" />
           <br></br>
-          <button ng-click="submit()">Submit Question</button>
+          <button ng-click="quest.submit()">Submit Question</button>
       </div>
 
     </div><!-- /.container -->

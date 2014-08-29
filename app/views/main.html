@@ -26,32 +26,21 @@
           </ul>
         </form>
       </div>
-      <div class="jumbotron question">
-        <form ng-submit="submit()">
-          <h3>Submit a question by entering information into the fields below.</h3>
+      <div class="jumbotron new-question">
+          <h3>Create a New Question</h3>
           Question:
-          <input type="text" ng-model="question" name="text" />
+          <input type="text" ng-model="newQuestion.q" name="text" />
           <br></br>
-          Option 1:
-          <input type="text" ng-model="option1" name="text" />
-          <br></br>
-          Option 2:
-          <input type="text" ng-model="option2" name="text" />
-          <br></br>
-          Option 3:
-          <input type="text" ng-model="option3" name="text" />
-          <br></br>
-          Option 4:
-          <input type="text" ng-model="option4" name="text" />
+          <button ng-click="addOption()">Add Answer Option:</button>
+          <input type="text" ng-repeat="option in newQuestion.options" ng-model="option.value" name="text"/>
           <br></br>
           Difficulty:
-          <input type="text" ng-model="difficulty" name="text" />
+          <input type="text" ng-model="newQuestion.difficulty" name="text" />
           <br></br>
           Answer:
-          <input type="text" ng-model="answer" name="text" />
+          <input type="text" ng-model="newQuestion.answer" name="text" />
           <br></br>
-          <input type="submit" id="submit" value="Submit" />
-        </form>
+          <button ng-click="submit()">Add Question</button>
       </div>
 
     </div><!-- /.container -->

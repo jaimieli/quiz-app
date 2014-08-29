@@ -42,18 +42,14 @@ angular.module('quizApp')
       quest.answered = true;
     };
     $scope.score = 0;
+    $scope.newQuestion = {options:[]};
+    $scope.options=[];
+    $scope.addOption = function() {
+      $scope.newQuestion.options.push({value:''});
+    };
     $scope.submit = function() {
-      $scope.quiz.push({
-        'q':this.question,
-        'options': [
-          {'value': this.option1},
-          {'value': this.option2},
-          {'value': this.option3},
-          {'value': this.option4}
-          ],
-        'answer': this.answer,
-        'difficulty': +this.difficulty
-      })
-      $
+      $scope.newQuestion.difficulty = +$scope.newQuestion.difficulty;
+      $scope.quiz.push($scope.newQuestion);
+      $scope.newQuestion = {options:[]};
     }
   });

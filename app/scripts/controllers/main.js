@@ -37,11 +37,11 @@ angular.module('quizApp')
     // $scope.letters = ['A', 'B', 'C', 'D'];
     $scope.check = function(opt, quest) {
       if (!quest.answered && opt===quest.answer){
-        $scope.score++;
+        $scope.score.value++;
       }
       quest.answered = true;
     };
-    $scope.score = 0;
+    $scope.score = {value: 0};
     $scope.newQuestion = {options:[]};
     $scope.options=[];
     $scope.addOption = function() {

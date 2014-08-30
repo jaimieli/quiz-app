@@ -8,8 +8,10 @@
  * Controller of the quizApp
  */
 angular.module('quizApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.score = {value: 0};
+  .controller('MainCtrl', function($scope) {
+    $scope.score = {
+      value: 0
+    };
     $scope.$on('increase_score', function() {
       $scope.score.value++;
     })

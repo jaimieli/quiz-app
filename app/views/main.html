@@ -8,7 +8,7 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="#">Quiz App</a>
-          <p id="score">Score: {{score.value}}</h1>
+          <a class="navbar-brand" href="#" id="score">Score: {{score.value}}</a>
         </div>
         <div class="collapse navbar-collapse">
         </div><!--/.nav-collapse -->
@@ -16,7 +16,10 @@
     </div>
 
     <div class="container" ng-controller="QuizController">
-      <h3>Time Remaining: {{ timeLeft }}</h3>
+      <h3 id="countDown">{{ timeLeft }} seconds left!</h3>
+      <button ng-show="!isRunning" ng-click="startTimer()">Start</button>
+      <button ng-show="isRunning" ng-click="pauseTimer()">Pause</button>
+      <button ng-click="restartTimer()">Restart</button>
       <div class="jumbotron question" ng-repeat="question in quiz | orderBy:'difficulty'">
         <form action="">
         <h2>{{$index + 1}}. {{question.q}}</h2>

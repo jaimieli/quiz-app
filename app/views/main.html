@@ -28,19 +28,29 @@
           </ul>
         </form>
       </div>
-      <div class="jumbotron" ng-controller="QuestionController as quest">
-          <h3>Create a New Question</h3>
-          Question: <input type="text" ng-model="quest.newQuestion.q" name="text"ng-minlength="10"/>
-          <br></br>
-          <button ng-click="quest.addOption()">Add Answer Option: </button>
-          <input type="text" ng-repeat="option in quest.newQuestion.options" ng-model="option.value" name="text"/>
-          <br></br>
-          Difficulty: <input type="text" ng-model="quest.newQuestion.difficulty" name="text" />
-          <br></br>
-          Answer: <input type="text" ng-model="quest.newQuestion.answer" name="text" />
-          <br></br>
-          <button ng-click="quest.submit()">Submit Question</button>
-      </div>
+      <form name="newQuestionForm" novalidate>
+        <div class="jumbotron" ng-controller="QuestionController as quest">
+            <h3>Create a New Question</h3>
+            Question: <input type="text" ng-model="quest.newQuestion.q" name="question"ng-minlength="10"/>
+            <br></br>
+            <button ng-click="quest.addOption()">Add Answer Option: </button>
+            <span>clicks: {{quest.count}}</span>
+            <div ng-form="optionForm">
+              <div ng-repeat="option in quest.newQuestion.options">
+                <input type="radio" name="answer" value="{{option.value}}" ng-model="quest.newQuestion.answer"></input>
+                <input type="text" name="option" ng-model="option.value" ng-minlength="1"></input>
+                <button class="btn btn-xs btn-danger">Delete</button>
+              </div>
+            </div>
+            <!-- <input type="text" ng-repeat="option in quest.newQuestion.options" ng-model="option.value" name="option"/> -->
+            <br></br>
+            Difficulty: <input type="text" ng-model="quest.newQuestion.difficulty" name="difficulty" />
+            <br></br>
+            <!-- Answer: <input type="text" ng-model="quest.newQuestion.answer" name="answer" /> -->
+            <br></br>
+            <button ng-click="quest.submit()">Submit Question</button>
+        </div>
+      </form>
 
     </div><!-- /.container -->
 

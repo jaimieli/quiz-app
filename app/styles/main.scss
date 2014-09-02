@@ -23,3 +23,7 @@ ul {
   margin-top: 20px;
   color: green;
 }
+
+.ng-dirty.ng-invalid {
+  border-color: red;
+}

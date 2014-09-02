@@ -38,7 +38,7 @@
               <div ng-repeat="option in quest.newQuestion.options">
                 <input type="radio" name="answer" value="{{option.value}}" ng-model="quest.newQuestion.answer"></input>
                 <input type="text" name="option" ng-model="option.value" ng-minlength="1"></input>
-                <button class="btn btn-xs btn-danger">Delete</button>
+                <button class="btn btn-xs btn-danger" ng-click="quest.deleteOption($index)">Delete</button>
               </div>
             </div>
             <br></br>

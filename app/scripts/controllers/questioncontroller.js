@@ -27,4 +27,7 @@ angular.module('quizApp')
         this.count = 0;
       }
     };
+    this.deleteOption = function(index) {
+      this.newQuestion.options.splice(index,1);
+    };
   });

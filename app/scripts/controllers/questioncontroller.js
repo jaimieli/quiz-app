@@ -17,14 +17,15 @@ angular.module('quizApp')
       this.count++;
     };
     this.submit = function() {
-      if(this.count < 2) {
-        return alert('You need at least 2 options.');
+      if(this.count < 2 || $scope.newQuestionForm.$invalid) {
+        return alert('Please appropriately fill-out all fields before submitting.')
       }
       else {
         this.newQuestion.difficulty = +this.newQuestion.difficulty;
         $scope.quiz.push(this.newQuestion);
         this.newQuestion = {options:[]};
         this.count = 0;
+        $scope.newQuestionForm.$setPristine();
       }
     };
     this.deleteOption = function(index) {
